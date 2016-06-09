@@ -820,7 +820,7 @@ MV_U8 mvCtrlRevGet(MV_VOID)
 *******************************************************************************/
 MV_STATUS mvCtrlNameGet(char *pNameBuff)
 {
-	mvOsSPrintf (pNameBuff, "%s%x Rev %d", SOC_NAME_PREFIX, 
+    mvOsSPrintf (pNameBuff, " 0x%x Rev %d",
 				mvCtrlModelGet(), mvCtrlRevGet()); 
 	
 	return MV_OK;
@@ -886,6 +886,9 @@ MV_STATUS mvCtrlModelRevNameGet(char *pNameBuff)
                 break;
         case MV_6281_A1_ID:
                 mvOsSPrintf (pNameBuff, "%s",MV_6281_A1_NAME);
+                break;
+        case MV_6282_A0_ID:
+                mvOsSPrintf (pNameBuff, "%s",MV_6282_A0_NAME);
                 break;
         case MV_6282_A1_ID:
                 mvOsSPrintf (pNameBuff, "%s",MV_6282_A1_NAME); 

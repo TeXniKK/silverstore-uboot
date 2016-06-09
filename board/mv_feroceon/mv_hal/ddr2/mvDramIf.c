@@ -69,7 +69,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "ddr2/mvDramIfStaticInit.h"
 
-/* #define MV_DEBUG */
+ #define MV_DEBUG
+#define mvOsPrintf      printf
 #ifdef MV_DEBUG
 #define DB(x) x
 #else
@@ -209,6 +210,7 @@ MV_STATUS mvDramIfDetect(MV_U32 forcedCl, MV_BOOL eccDisable)
 	busClkPs = 1000000000 / (busClk / 1000);  /* in ps units */
 	/* we will use bank 0 as the representative of the all the DRAM banks,  */
 	/* since bank 0 must exist.                                             */	
+    mvOsPrintf("Dram: Looking for banks \n");
 	for(i = 0; i < MV_DRAM_MAX_CS; i++)
 	{ 
 		/* if Bank exist */

@@ -84,7 +84,7 @@ int dram_init (void)
 
 	mvCtrlModelRevNameGet(name);
 	printf("\nSoc: %s",  name);
-	printf(" (DDR3)\n",  name);
+    printf(" (DDR3)\n");
 
 	printf("CPU running @ %dMhz L2 running @ %dMhz\n",  mvCpuPclkGet()/1000000, mvCpuL2ClkGet()/1000000);
 #ifdef MV_TCLK_CALC
@@ -93,7 +93,7 @@ int dram_init (void)
 	printf("SysClock = %dMhz , TClock = %dMhz \n\n", CFG_BUS_CLK/1000000, CFG_TCLK/1000000);
 #endif
 #if defined(MV_INC_BOARD_DDIM)
-	/* Call dramInit */
+    /* Call dramInit */
 	if (0 == (dramTotalSize = initdram(0)))
 	{
 		printf("DRAM Initialization Failed\n");
@@ -129,7 +129,7 @@ int dram_init (void)
 		else
 			gd->bd->bi_dram[i].start = memBase;
 
-		gd->bd->bi_dram[i].size = mvDramIfBankSizeGet(i);
+        gd->bd->bi_dram[i].size = 0x8000000;//mvDramIfBankSizeGet(i);
 #endif
 		dramTotalSize += gd->bd->bi_dram[i].size;
 		if (gd->bd->bi_dram[i].size)
